@@ -8,3 +8,7 @@ Route::get('/', function () {
         'homepage' => HomepageContent::query()->first(),
     ]);
 });
+
+Route::fallback(function () {
+    return redirect('/', 301);
+});
