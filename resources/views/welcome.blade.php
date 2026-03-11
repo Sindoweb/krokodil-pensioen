@@ -170,8 +170,8 @@
                             </a>
                         </p>
                         <p>
-                            <a href="tel:+3250337579" class="contact-link text-warm-700 dark:text-cream-300">
-                                050/33.75.79
+                            <a href="tel:+32478216024" class="contact-link text-warm-700 dark:text-cream-300">
+                                0478/21.60.24
                             </a>
                         </p>
                     </address>
