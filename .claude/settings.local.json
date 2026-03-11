@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.krokodil.be)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_install",
+      "Bash(npm run:*)",
+      "mcp__laravel-boost__get-absolute-url",
+      "Bash(curl:*)",
+      "mcp__laravel-boost__application-info",
+      "mcp__laravel-boost__database-schema",
+      "mcp__laravel-boost__search-docs",
+      "mcp__laravel-boost__list-artisan-commands",
+      "Bash(php artisan:*)",
+      "Bash(vendor/bin/pint:*)",
+      "mcp__laravel-boost__tinker"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "context7",
+    "laravel-boost",
+    "herd"
+  ]
+}

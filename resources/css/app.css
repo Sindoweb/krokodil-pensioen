@@ -1,0 +1,350 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Nunito', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: 'Lora', Georgia, Cambria, 'Times New Roman', Times, serif;
+
+    --color-cream-50: #FEFDFB;
+    --color-cream-100: #FBF8F3;
+    --color-cream-200: #F5F0E8;
+    --color-cream-300: #EDE5D8;
+    --color-cream-400: #DDD3C2;
+
+    --color-warm-800: #2D2A26;
+    --color-warm-700: #4A4640;
+    --color-warm-600: #6B665E;
+    --color-warm-500: #8A847B;
+    --color-warm-400: #A8A299;
+
+    /* Krokodil.be brand palette */
+    --color-krokodil: #8ABB2A;
+    --color-krokodil-dark: #014C2D;
+    --color-krokodil-forest: #145629;
+    --color-krokodil-light: #F0F6E4;
+    --color-krokodil-muted: #B5D472;
+
+    --color-night-950: #121110;
+    --color-night-900: #1A1917;
+    --color-night-800: #252320;
+    --color-night-700: #333029;
+}
+
+/* ---- Animations ---- */
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes gentle-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes draw-line {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.animate-fade-up {
+    animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in {
+    animation: fade-in 1s ease both;
+}
+
+.animate-scale-in {
+    animation: scale-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-float {
+    animation: gentle-float 6s ease-in-out infinite;
+}
+
+.animate-draw-line {
+    animation: draw-line 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-1000 { animation-delay: 1.0s; }
+.delay-1200 { animation-delay: 1.2s; }
+.delay-1500 { animation-delay: 1.5s; }
+.delay-1800 { animation-delay: 1.8s; }
+.delay-2000 { animation-delay: 2.0s; }
+
+/* ---- Texture overlays ---- */
+
+.paper-texture {
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(255, 243, 224, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(138, 187, 42, 0.05) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 100%, rgba(221, 211, 194, 0.2) 0%, transparent 50%);
+}
+
+.dark .paper-texture {
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(138, 187, 42, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 243, 224, 0.02) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 100%, rgba(42, 39, 34, 0.4) 0%, transparent 50%);
+}
+
+/* ---- Hero image treatment ---- */
+
+.hero-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.hero-image-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 60%,
+        rgba(45, 42, 38, 0.08) 100%
+    );
+    pointer-events: none;
+}
+
+.dark .hero-image-wrapper::after {
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(18, 17, 16, 0.3) 100%
+    );
+}
+
+/* ---- Letter styling ---- */
+
+.letter-body {
+    position: relative;
+}
+
+.letter-body p {
+    margin-bottom: 1rem;
+}
+
+.letter-body p:last-child {
+    margin-bottom: 0;
+}
+
+.letter-body a {
+    position: relative;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--color-warm-800);
+    transition: color 0.3s ease;
+}
+
+.dark .letter-body a {
+    color: var(--color-cream-200);
+}
+
+.letter-body a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--color-krokodil);
+    transition: width 0.3s ease;
+}
+
+.letter-body a:hover::after {
+    width: 100%;
+}
+
+.letter-body a:hover {
+    color: var(--color-krokodil);
+}
+
+.letter-body::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.6em;
+    left: -0.15em;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--color-krokodil);
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.dark .letter-body::before {
+    opacity: 0.08;
+}
+
+/* ---- Decorative divider ---- */
+
+.divider-ornament {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.divider-ornament::before,
+.divider-ornament::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-cream-400),
+        transparent
+    );
+}
+
+.dark .divider-ornament::before,
+.dark .divider-ornament::after {
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-night-700),
+        transparent
+    );
+}
+
+/* ---- Crocodile SVG accent ---- */
+
+.croc-accent {
+    color: var(--color-krokodil);
+    opacity: 0.07;
+    pointer-events: none;
+    user-select: none;
+}
+
+.dark .croc-accent {
+    opacity: 0.04;
+}
+
+/* ---- Years badge ribbon ---- */
+
+.years-badge {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-krokodil) 0%, var(--color-krokodil-forest) 100%);
+    box-shadow:
+        0 8px 32px rgba(138, 187, 42, 0.25),
+        0 2px 8px rgba(1, 76, 45, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.dark .years-badge {
+    box-shadow:
+        0 8px 32px rgba(138, 187, 42, 0.15),
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ---- Smooth scroll-triggered appearance (intersection observer alternative via CSS) ---- */
+
+@supports (animation-timeline: view()) {
+    .scroll-reveal {
+        animation: fade-up linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 30%;
+    }
+}
+
+/* ---- Selection color ---- */
+
+::selection {
+    background-color: rgba(138, 187, 42, 0.25);
+    color: inherit;
+}
+
+.dark ::selection {
+    background-color: rgba(138, 187, 42, 0.15);
+}
+
+/* ---- Link hover for contact ---- */
+
+.contact-link {
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--color-krokodil);
+    transition: width 0.3s ease;
+}
+
+.contact-link:hover::after {
+    width: 100%;
+}
+
+.contact-link:hover {
+    color: var(--color-krokodil);
+}
+
+/* ---- Leaf decoration ---- */
+
+.leaf-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 35 Q20 20, 35 15 Q25 25, 15 35Z' fill='%238ABB2A' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 60px 60px;
+}
+
+.dark .leaf-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 35 Q20 20, 35 15 Q25 25, 15 35Z' fill='%238ABB2A' opacity='0.015'/%3E%3C/svg%3E");
+}
